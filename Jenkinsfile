@@ -6,7 +6,7 @@ node('linux'){
 
   stage('Build') {
     echo "Sample Build Step"
-    sh 'zip mybuild.zip  -r .'
+    sh 'zip mybuild.zip  -r . -x *.git*'
   }
   
   stage('Unit Tests') {
