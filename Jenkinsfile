@@ -17,6 +17,10 @@ node('linux'){
     echo "Sample Integration Tests"
   }
   
+  stage('publish to s3'){
+    step([$class: 'S3BucketPublisher', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'jenkinstest2', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: true, noUploadOnFailure: true, selectedRegion: 'us-west-2', showDirectlyInBrowser: false, sourceFile: 'mybuild,zip', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], profileName: 'jenkinstest2', userMetadata: []])
+  }
+  
   //Return if not master
   if (env.BRANCH_NAME != "master"){
     echo "Is a feature branch, so no need for deployment"
