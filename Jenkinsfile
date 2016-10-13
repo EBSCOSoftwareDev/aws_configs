@@ -6,6 +6,7 @@ node('linux'){
 
   stage('Build') {
     echo "Sample Build Step"
+    sh 'zip mybuild.zip  -r .'
   }
   
   stage('Unit Tests') {
@@ -14,7 +15,6 @@ node('linux'){
   
   stage('Integration Tests') {
     echo "Sample Integration Tests"
-    echo "$env.BRANCH_NAME"
   }
   
   //Return if not master
