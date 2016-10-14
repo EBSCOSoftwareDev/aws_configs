@@ -32,12 +32,15 @@ node('linux'){
     echo "Is a feature branch, so no need for deployment"
     return
   }
-    
-  //Wait one hour for answer
-  timeout(time: 1, unit: 'HOURS') {
-    input 'Deploy to Development?'
-  }
-  
+}
+
+//Wait one hour for answer
+//Outside of node object to use only a lightweight executor - not a full one
+timeout(time: 1, unit: 'HOURS') {
+  input 'Deploy to Development?'
+}
+
+node('linux'){
   stage ("Development Deployment"){
     
   }
@@ -45,6 +48,4 @@ node('linux'){
   //TODO: Future deploy to QA
   //TODO: Future Run full QA Regression
   //TODO: Future Deploy to Production
-  
 }
-         
