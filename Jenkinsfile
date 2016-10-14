@@ -18,7 +18,7 @@ node('linux'){
   }
   
   stage('publish to s3'){
-    step([$class: 'S3BucketPublisher', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'jenkinstest3', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: true, noUploadOnFailure: true, selectedRegion: 'US_WEST_1', showDirectlyInBrowser: false, sourceFile: 'mybuild.zip', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], profileName: 'jenkinstest4', userMetadata: []])
+   step([$class: 'S3BucketPublisher', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 'jenkinstest3', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: true, noUploadOnFailure: true, selectedRegion: 'us-west-1', showDirectlyInBrowser: false, sourceFile: 'mybuild.zip', storageClass: 'STANDARD', uploadFromSlave: true, useServerSideEncryption: false]], profileName: 'jenkinstest4', userMetadata: []])
   }
   
   //Return if not master
