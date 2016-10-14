@@ -1,5 +1,11 @@
 node('linux'){
   
+  step([$class: 'GitHubSetCommitStatusBuilder'])
+  
+  //Set the rotation of logs and builds
+  properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([[$class: 'PeriodicFolderTrigger', interval: '15m']])])
+  
+  
   stage('CheckOut Source') {
     checkout scm
   }
